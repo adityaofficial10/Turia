@@ -17,21 +17,23 @@ async function writeData(data) {
     const values = await readData();
     var last = Array.isArray(values) ? values[values.length - 1].user_id : -1;
     data.password = await bcrypt.hashSync(data.password, 3);
-    data = Object.assign({ user_id: last + 1 }, data);
+    data = Object.assign({ user_id: String(Number(last) + 1) }, data);
     console.log(data);
     var records = [];
     records.push(data);
     await stringify(records, {
-        header: true,
+        header: false,
     }, function (err, output) {
         fs.appendFile(__dirname + '/data.csv', output, function(err) {
             if(err)
              throw err;
             else
              console.log("Success!");
+
         });
     });
     return data;
+
 };
 
 module.exports = {
