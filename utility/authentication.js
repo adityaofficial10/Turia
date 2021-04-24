@@ -6,8 +6,9 @@ const { AuthenticationError } = require('apollo-server');
 async function login (email, password) {
 
   const values = await read();
+  console.log(values);
   var ok = Array.isArray(values) ? values.findIndex(x => x.email == email) : 0;
-  if(ok) {
+  if(ok != -1) {
       if(bcrypt.compareSync(password, values[ok].password)){
           return values[ok];
       }
