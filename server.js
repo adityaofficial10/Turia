@@ -17,7 +17,6 @@ const server = new ApolloServer({
                 // add user id to request
                 user.id = decoded.id;
                 user.loggedIn = true;
-                console.log(user);
         });
         return {auth, fetch, user, res, req};
     }
