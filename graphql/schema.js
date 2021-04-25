@@ -29,6 +29,8 @@ const typeDefs = gql`
         create(first_name: String!, last_name: String!, phone_number: String!, email: String!, password: String!): User!
         logout: User!
         delete(email: String!, phone_number: String!, password: String!): User!
+        updatePassword(email: String!, currentPassword: String!, newPassword: String!): User!
+        updatePhoneNumber(email: String!, password: String!, phone_number: String!): User!
     }
 `
 
