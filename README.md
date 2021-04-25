@@ -1,5 +1,3 @@
-# Turia
-
 # Setup Instructions:
 1. Clone this repository.
 2. Create an environment file named '.env' in the root directory and set the value of the variables 'SECRET_KEY' and 'PORT'.                                                             
