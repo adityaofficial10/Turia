@@ -32,7 +32,6 @@ async function writeData(data) {
         });
     });
     return data;
-
 };
 
 module.exports = {
