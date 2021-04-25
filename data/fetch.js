@@ -18,7 +18,6 @@ async function writeData(data) {
     var last = Array.isArray(values) ? values[values.length - 1].user_id : -1;
     data.password = await bcrypt.hashSync(data.password, 3);
     data = Object.assign({ user_id: String(Number(last) + 1) }, data);
-    console.log(data);
     var records = [];
     records.push(data);
     await stringify(records, {
