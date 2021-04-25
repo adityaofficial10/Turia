@@ -14,13 +14,21 @@ const typeDefs = gql`
         created_date: String!
         last_login: String!
         last_updated_date: String!
-      }
+    }
+    type loggedinUser {
+        user_id: Int!
+        email: String!
+        token: String!
+    }
     type Query {
         user(id: String!): User!
+        users: [User!]
     }
     type Mutation {
-        login(email: String!, password: String!): User!
+        login(email: String!, password: String!): loggedinUser!
         create(first_name: String!, last_name: String!, phone_number: String!, email: String!, password: String!): User!
+        logout: User!
+        delete(email: String!, phone_number: String!, password: String!): User!
     }
 `
 
