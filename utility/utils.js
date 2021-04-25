@@ -1,11 +1,11 @@
 require('dotenv').config({
-    path:'.env'
+    path:'config/.env'
 });
 const fs = require('fs');
 var stringify = require('csv-stringify');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { read, write } = require('../data/fetch');
+const { read, write } = require('./fetch');
 const { AuthenticationError, UserInputError } = require('apollo-server');
 const cookieParser = require('cookie-parser');
 
