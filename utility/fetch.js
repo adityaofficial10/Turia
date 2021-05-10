@@ -15,7 +15,6 @@ async function readData() {
 };
 
 async function writeData(data) {
-    const ws = fs.createWriteStream("out.csv");
     const values = await readData();
     var last = Array.isArray(values) ? values[values.length - 1].user_id : -1;
     data.password = await bcrypt.hashSync(data.password, 3);

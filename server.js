@@ -15,7 +15,8 @@ const server = new ApolloServer({
     resolvers,
     context: ({ req, res }) => {
         const user = {};
-        req.cookies && jwt.verify(req.cookies.token, process.env.SECRET_KEY, function (err, decoded) {
+        const token = req.get('Authorization') || '';
+        token && jwt.verify(token, process.env.SECRET_KEY, function (err, decoded) {
                 // add user id to request
                 user.id = decoded.id;
                 user.loggedIn = true;
@@ -28,6 +29,3 @@ server
         port: process.env.PORT || 4000
     })
     .then(({ url }) => console.log(`Server is running on ${url}`));
-
-
-

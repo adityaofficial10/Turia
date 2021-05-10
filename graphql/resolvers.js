@@ -15,7 +15,7 @@ const resolvers = {
         }
     },
     Mutation: {
-        async login (root, {  email, password }, { auth,res }) {
+        async login (root, {  email, password }, { auth, res, req }) {
             const data = await auth.login(email, password); 
             await res.cookie('token', data.token, {
                 maxAge: 1000 * 60 * 60, // 1 hour
@@ -27,7 +27,6 @@ const resolvers = {
             return data;
         },
         async logout (root, {}, {res, user, fetch, req}) {
-            console.log(req.cookies);
             if(user.loggedIn) {
                 res.clearCookie('token');
                 const values = await fetch.read();

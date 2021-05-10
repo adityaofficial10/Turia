@@ -9,6 +9,7 @@ const { read, write } = require('./fetch');
 const { AuthenticationError, UserInputError } = require('apollo-server');
 const cookieParser = require('cookie-parser');
 
+
 async function deleteUser(email, phone_number, password) {
     var data = await read();
     if(data && Array.isArray(data)) {
@@ -19,7 +20,7 @@ async function deleteUser(email, phone_number, password) {
                 header: true,
             }, function (err, output) {
                 var path = __dirname;
-                path = path.substr(0, path.length - 7) + '/data/data.csv';
+                path = path.substr(0, path.length - 7) + 'config/data.csv';
                 fs.writeFile(path, output, function(err) {
                     if(err)
                      throw err;
@@ -74,7 +75,7 @@ async function updatePhoneNumber(email, password, phone_number) {
                 header: true,
             }, function (err, output) {
                 var path = __dirname;
-                path = path.substr(0, path.length - 7) + '/data/data.csv';
+                path = path.substr(0, path.length - 7) + 'config/data.csv';
                 fs.writeFile(path, output, function(err) {
                     if(err)
                      throw err;
